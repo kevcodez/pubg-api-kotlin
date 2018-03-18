@@ -1,21 +1,18 @@
 package de.kevcodez.pubg.model
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 enum class Region(val identifier: String) {
 
     XBOX_ASIA("xbox-as"),
-    XBOX_EU("xbox-as"),
-    XBOX_NA("xbox-as"),
-    XBOX_OC("xbox-as"),
-    PC_KOREA_JAPAN("xbox-as"),
-    PC_NA("xbox-as"),
-    PC_EU("xbox-as"),
-    PC_OC("xbox-as"),
-    PC_KAKAO("xbox-as"),
-    PC_SEA("xbox-as"),
-    PC_SA("xbox-as"),
-    PC_ASIA("xbox-as")
+    XBOX_EUROPE("xbox-eu"),
+    XBOX_NORTH_AMERICA("xbox-na"),
+    XBOX_OCEANIA("xbox-oc"),
+    PC_KOREA_JAPAN("pc-as"),
+    PC_NORTH_AMERICA("pc-na"),
+    PC_EUROPE("pc-eu"),
+    PC_OCEANIA("pc-oc"),
+    PC_KAKAO("pc-kakao"),
+    PC_SOUTH_EATH_ASIA("pc-sea"),
+    PC_SOUTH_AMERICA("pc-sa"),
+    PC_ASIA("pc-as")
 
 }

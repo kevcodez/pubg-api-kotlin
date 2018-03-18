@@ -1,5 +1,20 @@
+group = 'de.kevcodez.pubg.api'
+version = '1.0-SNAPSHOT'
+
+ext {
+    // compile
+    jackson_version = "2.9.4.1"
+    okhttp_version = "3.10.0"
+    slf4j_version = "1.7.25"
+
+    // test
+    junit_version = "5.1.0"
+    mockito_kotlin_version = "1.5.0"
+}
+
 buildscript {
-    ext.kotlin_version = '1.2.30'
+
+    ext.kotlin_version = "1.2.30"
 
     repositories {
         mavenCentral()
@@ -11,9 +26,6 @@ buildscript {
     }
 }
 
-group 'de.kevcodez.pubg'
-version '1.0-SNAPSHOT'
-
 apply plugin: 'idea'
 apply plugin: 'org.junit.platform.gradle.plugin'
 apply plugin: 'kotlin'
@@ -24,13 +36,14 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4.1"
-    compile "com.squareup.okhttp3:okhttp:3.10.0"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
+    compile "com.squareup.okhttp3:okhttp:$okhttp_version"
+    compile "org.slf4j:slf4j-api:$slf4j_version"
 
-    testCompile "org.junit.jupiter:junit-jupiter-api:5.1.0"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.1.0"
-    testCompile 'com.nhaarman:mockito-kotlin:1.5.0'
-
+    testCompile "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+    testCompile "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+    testCompile "org.slf4j:slf4j-simple:$slf4j_version"
 }
 
 compileKotlin {
