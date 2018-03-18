@@ -7,7 +7,7 @@ PUBG API wrapper written in Kotlin. Requires Java 1.8+.
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
 
-val match = apiClient.getMatch(Region.PC_EU, "id")
+val match = apiClient.getMatch(Region.PC_EUROPE, "id")
 println(match.duration)
 ```
 
