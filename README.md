@@ -1,4 +1,6 @@
-PUBG API wrapper written in Kotlin. Requires Java 1.8+.
+PUBG API wrapper written in Kotlin. Requires Java 1.8+. 
+
+[Official API Page](https://developer.playbattlegrounds.com)
 
 # Usage
 
