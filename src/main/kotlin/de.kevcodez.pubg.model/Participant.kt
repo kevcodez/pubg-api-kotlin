@@ -12,7 +12,7 @@ data class Participant(
     /** Participant ID */
     val id: String,
     /** Stats particular to participants */
-    val stats: Any,
+    val stats: ParticipantStats,
     val actor: String,
     /** Platform-region shard */
     val shardId: String
