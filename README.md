@@ -73,8 +73,14 @@ Prints
 >  Victim: Character(name=kavek, teamId=15, health=90.0, location=Location(x=408673.34, y=457988.9, z=4938.0), ranking=0, accountId=account.00044da12eda458d9d493ae7f7cf87db)
 
 
-# Information
+# Implementation
 
 The [OkHttp3](http://square.github.io/okhttp/) client is used as HTTP client. During the creation of the API client, you can register your own OkHttpClient and register interceptors, proxies, etc.
 
 For parsing the JSON responses, [Jackson FasterXML](https://github.com/FasterXML/jackson) is used.
+
+# Links
+
+[Official Documentation](https://developer.playbattlegrounds.com)
+
+[Official assets, like images, and dictionaries](https://github.com/pubg/api-assets).
