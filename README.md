@@ -2,9 +2,36 @@ PUBG API wrapper written in Kotlin. Requires Java 1.8+.
 
 [Official API Page](https://developer.playbattlegrounds.com)
 
-[![Build Status](https://travis-ci.org/kevcodez/pubg-api-kotlin.svg?branch=master)](https://travis-ci.org/kevcodez/pubg-api-kotlin)
 
-# Usage
+![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/de/kevcodez/pubg/pubg-api-wrapper/maven-metadata.xml.svg)
+ [![Build Status](https://travis-ci.org/kevcodez/pubg-api-kotlin.svg?branch=master)](https://travis-ci.org/kevcodez/pubg-api-kotlin)
+[![GitHub license](https://img.shields.io/github/license/kevcodez/pubg-api-kotlin.svg)](https://github.com/kevcodez/pubg-api-kotlin/blob/master/LICENSE)
+
+
+# Getting started
+
+The releases are pushed to maven central. Include the latest release in your build file.
+
+## Maven
+```xml
+<dependency>
+    <groupId>de.kevcodez.pubg</groupId>
+    <artifactId>pubg-api-wrapper</artifactId>
+    <version>0.1.0</version>
+</dependency>
+```
+
+## Gradle
+
+```groovy
+compile "de.kevcodez.pubg:pubg-api-wrapper:0.1.0"
+```
+
+## API Key
+
+If you do not have an API key yet, go to the [Official API Page](https://developer.playbattlegrounds.com) and register.
+
+## First request
 
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
@@ -12,6 +39,8 @@ val apiClient = ApiClient("my-key", OkHttpClient())
 val match = apiClient.getMatch(Region.PC_EUROPE, "id")
 println(match.duration)
 ```
+
+You can configure the [OkHttp3 Client](http://square.github.io/okhttp/) to register proxies or interceptors.
 
 ## Players
 
