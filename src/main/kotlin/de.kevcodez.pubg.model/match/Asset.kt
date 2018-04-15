@@ -1,4 +1,4 @@
-package de.kevcodez.pubg.model
+package de.kevcodez.pubg.model.match
 
 import java.time.Instant
 

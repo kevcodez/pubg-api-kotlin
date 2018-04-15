@@ -1,6 +1,8 @@
-package de.kevcodez.pubg.model
+package de.kevcodez.pubg.model.match
 
-class RosterType : MatchObject() {
+import de.kevcodez.pubg.model.Relationships
+
+class Roster : MatchObject() {
     lateinit var stats: RosterStats
     lateinit var id: String
 

@@ -1,5 +1,7 @@
-package de.kevcodez.pubg.model
+package de.kevcodez.pubg.model.match
 
+import de.kevcodez.pubg.model.Link
+import de.kevcodez.pubg.model.Relationships
 import java.time.Instant
 
 data class MatchResponse(

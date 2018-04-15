@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import de.kevcodez.pubg.exception.ApiException
-import de.kevcodez.pubg.model.MatchResponse
-import de.kevcodez.pubg.model.PlayerResponse
+import de.kevcodez.pubg.model.match.MatchResponse
+import de.kevcodez.pubg.model.player.PlayerResponse
 import de.kevcodez.pubg.model.Region
 import de.kevcodez.pubg.model.telemetry.events.TelemetryEvent
 import okhttp3.HttpUrl

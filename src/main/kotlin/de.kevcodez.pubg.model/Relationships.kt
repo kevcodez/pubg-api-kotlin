@@ -7,11 +7,11 @@ import com.fasterxml.jackson.databind.node.ArrayNode
 data class Relationships(
     var matchIds: List<String>?,
     var participantIds: List<String>?,
-    val team: Any?,
+    val team: Any?, // TODO missing an example
     var assetIds: List<String>?,
     var rosterIds: List<String>?,
-    val rounds: Any?,
-    val spectators: Any?
+    val rounds: Any?, // TODO missing an example
+    val spectators: Any? // TODO missing an example
 ) {
     @JsonProperty("participants")
     private fun unpackParticipantIds(participants: JsonNode) {
