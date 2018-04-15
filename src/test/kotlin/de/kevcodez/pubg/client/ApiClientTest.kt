@@ -45,6 +45,14 @@ class ApiClientTest {
         // TODO proper assertions
     }
 
+    @Test
+    fun getStatus() {
+        mockResponse("/examples/status.json")
+        val status = apiClient.getStatus()
+
+        // TODO proper assertions
+    }
+
     private fun mockResponse(resource: String) {
         val mockedResponse: Response = mock()
         whenever(mockedResponse.code()).thenReturn(200)

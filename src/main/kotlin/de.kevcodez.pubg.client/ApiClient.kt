@@ -9,6 +9,7 @@ import de.kevcodez.pubg.exception.ApiException
 import de.kevcodez.pubg.model.Region
 import de.kevcodez.pubg.model.match.MatchResponse
 import de.kevcodez.pubg.model.player.PlayerResponse
+import de.kevcodez.pubg.model.status.Status
 import de.kevcodez.pubg.model.telemetry.events.TelemetryEvent
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -99,6 +100,22 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         }
 
         return objectMapper.readValue(response.body()!!.string(), object : TypeReference<List<TelemetryEvent>>() {})
+    }
+
+    fun getStatus() : Status {
+        val urlBuilder = HttpUrl.Builder()
+            .scheme(API_SCHEME)
+            .host(API_HOST)
+            .addPathSegment("status")
+
+        val request = buildRequest(urlBuilder.build())
+
+        val response = httpClient.newCall(request).execute()
+        if (response.code() != 200) {
+            throw ApiException(response)
+        }
+
+        return objectMapper.readValue(response.body()!!.string(), Status::class.java)
     }
 
     private fun buildRequest(url: HttpUrl): Request {

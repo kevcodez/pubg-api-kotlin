@@ -48,6 +48,14 @@ val match = apiClient.getMatch(Region.PC_EUROPE, "id")
 println(match.duration)
 ```
 
+## Status
+
+```kotlin
+val status = apiClient.getStatus()
+println(status.releasedAt)
+println(status.version)
+```
+
 ## Telemetry data
 
 Check the de.kevcodez.pubg.model.telemetry package for all structures. The telemetry data contains a list of telemetry events.
