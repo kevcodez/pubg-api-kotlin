@@ -2,7 +2,7 @@ package de.kevcodez.pubg.model
 
 import java.time.Instant
 
-class Asset : ObjectWithType() {
+class Asset : MatchObject() {
     lateinit var id: String
     lateinit var attributes: AssetAttributes
 }

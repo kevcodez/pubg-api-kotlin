@@ -1,6 +1,6 @@
 package de.kevcodez.pubg.model
 
-class RosterType : ObjectWithType() {
+class RosterType : MatchObject() {
     lateinit var stats: RosterStats
     lateinit var id: String
 

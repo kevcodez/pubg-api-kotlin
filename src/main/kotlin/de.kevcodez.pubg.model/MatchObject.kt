@@ -10,4 +10,4 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
     JsonSubTypes.Type(value = Asset::class, name = "asset"),
     JsonSubTypes.Type(value = PlayerType::class, name = "player")
 )
-open class ObjectWithType
+open class MatchObject

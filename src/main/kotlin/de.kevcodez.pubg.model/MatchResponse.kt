@@ -4,7 +4,7 @@ import java.time.Instant
 
 data class MatchResponse(
     val data: MatchData,
-    val included: List<ObjectWithType>,
+    val included: List<MatchObject>,
     val links: Link,
     val meta: Any
 )

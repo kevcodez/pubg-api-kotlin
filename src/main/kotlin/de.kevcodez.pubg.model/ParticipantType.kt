@@ -1,6 +1,6 @@
 package de.kevcodez.pubg.model
 
-open class ParticipantType : ObjectWithType() {
+open class ParticipantType : MatchObject() {
     var id: String = ""
     var actor: String = ""
     var shardId: String = ""
