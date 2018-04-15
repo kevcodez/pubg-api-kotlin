@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "type": "player",
+      "id": "account.f8c9fdd3277742409f6a6917a00eee01",
+      "attributes": {
+        "createdAt": "2018-04-05T20:42:53Z",
+        "name": "HazeZombie",
+        "patchVersion": "",
+        "shardId": "pc-eu",
+        "stats": null,
+        "titleId": "bluehole-pubg",
+        "updatedAt": "2018-04-05T20:42:53Z"
+      },
+      "relationships": {
+        "assets": {
+          "data": []
+        },
+        "matches": {
+          "data": [
+            {
+              "type": "match",
+              "id": "4b69b538-3d1a-4dee-b2a5-80fcc3b7e73e"
+            },
+            {
+              "type": "match",
+              "id": "fc6db7bd-f16b-43e5-aa2d-1d6e2a66c57c"
+            },
+            {
+              "type": "match",
+              "id": "b1c35f7e-eaf8-49c7-9924-d36b74609069"
+            },
+            {
+              "type": "match",
+              "id": "0923f6a0-053d-4e9e-9813-28672ff025ce"
+            },
+            {
+              "type": "match",
+              "id": "76a9290b-eb1a-47e9-9d43-f7568d3ca07c"
+            },
+            {
+              "type": "match",
+              "id": "c1ddf724-ffa7-4e51-98ce-2a2f73723fbf"
+            }
+          ]
+        }
+      },
+      "links": {
+        "schema": "",
+        "self": "https://api.playbattlegrounds.com/shards/pc-eu/players/account.f8c9fdd3277742409f6a6917a00eee01"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.playbattlegrounds.com/shards/pc-eu/players?filter[playerNames]=HazeZombie"
+  },
+  "meta": {}
+}

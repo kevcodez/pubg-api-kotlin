@@ -1,14 +1,28 @@
 package de.kevcodez.pubg.model
 
+open class ParticipantType : ObjectWithType() {
+    var id: String = ""
+    var actor: String = ""
+    var shardId: String = ""
+    lateinit var attributes: ParticipantAttributes
+}
+
+data class ParticipantAttributes(
+    val stats: ParticipantStats,
+    val actor: String,
+    val shardId: String
+)
+
 data class ParticipantStats(
     val DBNOs: Int,
     val assists: Int,
     val boosts: Int,
     val damageDealt: Double,
-    val deathType: String,
+    val deathType: String?,
     val headshotKills: Int,
     val heals: Int,
     val killPlace: Int,
+    val killPoints: Int,
     val killPointsDelta: Int,
     val killStreaks: Int,
     val kills: Int,
@@ -16,7 +30,7 @@ data class ParticipantStats(
     val lastWinPoints: Int,
     val longestKill: Double,
     val mostDamage: Int,
-    val name: String,
+    val name: String?,
     val playerId: String,
     val revives: Int,
     val rideDistance: Double,
@@ -27,5 +41,6 @@ data class ParticipantStats(
     val walkDistance: Double,
     val weaponsAcquired: Int,
     val winPlace: Int,
-    val winPointsDelta: Int
+    val winPoints: Int,
+    val winPointsDelta: Double
 )

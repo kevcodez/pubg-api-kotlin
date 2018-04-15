@@ -1,26 +1,77 @@
 package de.kevcodez.pubg.client
 
-import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import de.kevcodez.pubg.exception.ApiException
-import de.kevcodez.pubg.model.Match
+import de.kevcodez.pubg.model.MatchResponse
+import de.kevcodez.pubg.model.PlayerResponse
 import de.kevcodez.pubg.model.Region
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.slf4j.LoggerFactory
+import java.nio.charset.StandardCharsets
 
 class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient) {
 
     private val objectMapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 
-    fun getMatch(region: Region, id: String): Match {
+    fun getPlayer(region: Region, id: String) : PlayerResponse {
         val urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
             .addPathSegment("shards")
-            .addPathSegment(region.toString())
+            .addPathSegment(region.identifier)
+            .addPathSegment("players")
+            .addPathSegment(id)
+
+        val request = buildRequest(urlBuilder.build())
+
+        val response = httpClient.newCall(request).execute()
+        if (response.code() != 200) {
+            throw ApiException(response)
+        }
+
+        return objectMapper.readValue(response.body()!!.string(), PlayerResponse::class.java)
+    }
+
+    fun getPlayers(region: Region, playerFilter: PlayerFilter) : PlayerResponse {
+        var urlBuilder = HttpUrl.Builder()
+            .scheme(API_SCHEME)
+            .host(API_HOST)
+            .addPathSegment("shards")
+            .addPathSegment(region.identifier)
+            .addPathSegment("players")
+
+        if (playerFilter.playerIds.isNotEmpty())
+            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerIds]", playerFilter.playerIds.joinToString())
+
+        if (playerFilter.playerNames.isNotEmpty())
+            urlBuilder =  urlBuilder.addEncodedQueryParameter("filter[playerNames]", playerFilter.playerNames.joinToString())
+
+
+        val request = buildRequest(urlBuilder.build())
+
+        val response = httpClient.newCall(request).execute()
+        if (response.code() != 200) {
+            throw ApiException(response)
+        }
+
+        val bytes = response.body()!!.bytes()
+        return objectMapper.readValue(String(bytes, StandardCharsets.UTF_8), PlayerResponse::class.java)
+    }
+
+    data class PlayerFilter(
+        val playerIds: List<String> = emptyList(),
+        val playerNames: List<String> = emptyList()
+    )
+
+    fun getMatch(region: Region, id: String): MatchResponse {
+        val urlBuilder = HttpUrl.Builder()
+            .scheme(API_SCHEME)
+            .host(API_HOST)
+            .addPathSegment("shards")
+            .addPathSegment(region.identifier)
             .addPathSegment("matches")
             .addPathSegment(id)
 
@@ -31,60 +82,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             throw ApiException(response)
         }
 
-        return objectMapper.readValue(response.body()!!.string(), Match::class.java)
-    }
-
-    fun getMatches(
-        region: Region,
-        offset: Int? = 0,
-        limit: Int? = 5,
-        sort: MatchSortBy? = MatchSortBy.CREATED_AT_ASCENDING,
-        filter: MatchFilter? = null
-    ): List<Match> {
-        if (limit != null && (limit < 0 || limit > 5))
-            LOG.warn("Limit should be within 1-5")
-
-        var urlBuilder = HttpUrl.Builder()
-            .scheme(API_SCHEME)
-            .host(API_HOST)
-            .addPathSegment("shards")
-            .addPathSegment(region.toString())
-            .addPathSegment("matches")
-
-        if (offset != null)
-            urlBuilder = urlBuilder.addQueryParameter("page[offset]", offset.toString())
-
-        if (limit != null)
-            urlBuilder = urlBuilder.addQueryParameter("page[limit]", limit.toString())
-
-        if (sort != null)
-            urlBuilder = urlBuilder.addQueryParameter("sort", sort.parameter)
-
-        if (filter != null) {
-            with(filter) {
-                if (filterCreatedAtStart != null)
-                    urlBuilder = urlBuilder.addQueryParameter("filter[createdAt-start]", filterCreatedAtStart)
-
-                if (filterCreatedAtEnd != null)
-                    urlBuilder = urlBuilder.addQueryParameter("filter[createdAt-end]", filterCreatedAtEnd)
-
-                if (filterPlayerIds != null)
-                    urlBuilder = urlBuilder.addQueryParameter("filter[playerIds]", filterPlayerIds.joinToString())
-
-                if (filterGameMode != null)
-                    urlBuilder = urlBuilder.addQueryParameter("filter[gameMode]", filterGameMode.joinToString())
-            }
-        }
-
-        val request = buildRequest(urlBuilder.build())
-
-        val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
-
-        return objectMapper.readValue(response.body()!!.string(), object : TypeReference<List<Match>>() {
-        })
+        return objectMapper.readValue(response.body()!!.string(), MatchResponse::class.java)
     }
 
     private fun buildRequest(url: HttpUrl): Request {

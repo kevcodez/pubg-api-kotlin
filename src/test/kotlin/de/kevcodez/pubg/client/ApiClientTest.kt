@@ -17,15 +17,15 @@ class ApiClientTest {
     @Test
     fun getMatch() {
         mockResponse("/examples/match.json")
-        val match = apiClient.getMatch(Region.PC_ASIA, "id")
+        val matchResponse = apiClient.getMatch(Region.PC_ASIA, "id")
 
         // TODO proper assertions when I have a valid sample
     }
 
     @Test
-    fun getMatches() {
-        mockResponse("/examples/matches.json")
-        val matches = apiClient.getMatches(region = Region.PC_ASIA)
+    fun getPlayer() {
+        mockResponse("/examples/player.json")
+        val playerResponse = apiClient.getPlayer(region = Region.PC_EUROPE, id = "foo")
 
         // TODO proper assertions when I have a valid sample
     }
