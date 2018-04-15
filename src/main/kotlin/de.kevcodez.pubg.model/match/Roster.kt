@@ -3,11 +3,11 @@ package de.kevcodez.pubg.model.match
 import de.kevcodez.pubg.model.Relationships
 
 class Roster : MatchObject() {
-    lateinit var stats: RosterStats
-    lateinit var id: String
 
+    lateinit var id: String
     lateinit var relationships: Relationships
     lateinit var attributes: RosterAttributes
+
 }
 
 data class RosterAttributes(
@@ -20,4 +20,3 @@ data class RosterStats(
     val rank: Int,
     val teamId: Int
 )
-

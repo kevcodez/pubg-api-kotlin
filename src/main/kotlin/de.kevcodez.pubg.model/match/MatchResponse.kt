@@ -25,7 +25,7 @@ data class MatchAttributes(
     val gameMode: String,
     val mapName: String,
     val shardId: String,
-    val stats: Any?,
-    val tags: Any?,
+    val stats: Any?, // TODO missing example
+    val tags: Any?, // TODO missing example
     val titleId: String
 )

@@ -33,7 +33,7 @@ class ApiClientTest {
     @Test
     fun getPlayers() {
         mockResponse("/examples/player.json")
-        val playersResponse = apiClient.getPlayers(region = Region.PC_ASIA, playerFilter = ApiClient.PlayerFilter())
+        val playersResponse = apiClient.getPlayers(region = Region.PC_ASIA, playerFilter = PlayerFilter())
     }
 
     @Test

@@ -6,9 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import de.kevcodez.pubg.exception.ApiException
+import de.kevcodez.pubg.model.Region
 import de.kevcodez.pubg.model.match.MatchResponse
 import de.kevcodez.pubg.model.player.PlayerResponse
-import de.kevcodez.pubg.model.Region
 import de.kevcodez.pubg.model.telemetry.events.TelemetryEvent
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
@@ -67,11 +67,6 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val bodyAsString = response.body()!!.string()
         return objectMapper.readValue(bodyAsString, PlayerResponse::class.java)
     }
-
-    data class PlayerFilter(
-        val playerIds: List<String> = emptyList(),
-        val playerNames: List<String> = emptyList()
-    )
 
     fun getMatch(region: Region, id: String): MatchResponse {
         val urlBuilder = HttpUrl.Builder()

@@ -7,7 +7,7 @@ data class PlayerResponse(
     @JsonProperty("data")
     val players: List<PlayerType>,
     val links: Link,
-    val meta: Any
+    val meta: Any // TODO missing example
 )
 
 
