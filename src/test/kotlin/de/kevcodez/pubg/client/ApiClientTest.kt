@@ -31,6 +31,12 @@ class ApiClientTest {
     }
 
     @Test
+    fun getPlayers() {
+        mockResponse("/examples/player.json")
+        val playersResponse = apiClient.getPlayers(region = Region.PC_ASIA, playerFilter = ApiClient.PlayerFilter())
+    }
+
+    @Test
     fun getTelemetry() {
         mockResponse("/examples/telemetry.json")
         val telemetryEvents =
