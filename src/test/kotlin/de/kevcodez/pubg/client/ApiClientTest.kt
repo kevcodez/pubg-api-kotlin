@@ -19,7 +19,7 @@ class ApiClientTest {
         mockResponse("/examples/match.json")
         val matchResponse = apiClient.getMatch(Region.PC_ASIA, "id")
 
-        // TODO proper assertions when I have a valid sample
+        // TODO proper assertions
     }
 
     @Test
@@ -27,7 +27,16 @@ class ApiClientTest {
         mockResponse("/examples/player.json")
         val playerResponse = apiClient.getPlayer(region = Region.PC_EUROPE, id = "foo")
 
-        // TODO proper assertions when I have a valid sample
+        // TODO proper assertions
+    }
+
+    @Test
+    fun getTelemetry() {
+        mockResponse("/examples/telemetry.json")
+        val telemetryEvents =
+            apiClient.getTelemetryData("https://telemetry-cdn.playbattlegrounds.com/pc-krjp/2018/01/01/0/0/1ad97f85-cf9b-11e7-b84e-0a586460f004-telemetry.json")
+
+        // TODO proper assertions
     }
 
     private fun mockResponse(resource: String) {

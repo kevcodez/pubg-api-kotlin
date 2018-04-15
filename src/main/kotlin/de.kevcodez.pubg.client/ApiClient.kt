@@ -1,16 +1,17 @@
 package de.kevcodez.pubg.client
 
+import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import de.kevcodez.pubg.exception.ApiException
 import de.kevcodez.pubg.model.MatchResponse
 import de.kevcodez.pubg.model.PlayerResponse
 import de.kevcodez.pubg.model.Region
+import de.kevcodez.pubg.model.telemetry.events.TelemetryEvent
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.slf4j.LoggerFactory
-import java.nio.charset.StandardCharsets
 
 class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient) {
 
@@ -57,8 +58,8 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             throw ApiException(response)
         }
 
-        val bytes = response.body()!!.bytes()
-        return objectMapper.readValue(String(bytes, StandardCharsets.UTF_8), PlayerResponse::class.java)
+        val bodyAsString = response.body()!!.string()
+        return objectMapper.readValue(bodyAsString, PlayerResponse::class.java)
     }
 
     data class PlayerFilter(
@@ -82,7 +83,21 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             throw ApiException(response)
         }
 
-        return objectMapper.readValue(response.body()!!.string(), MatchResponse::class.java)
+        val bodyAsString = response.body()!!.string()
+        return objectMapper.readValue(bodyAsString, MatchResponse::class.java)
+    }
+
+    fun getTelemetryData(URL: String) : List<TelemetryEvent> {
+        val httpUrl = HttpUrl.parse(URL)!!
+
+        val request = buildRequest(httpUrl)
+
+        val response = httpClient.newCall(request).execute()
+        if (response.code() != 200) {
+            throw ApiException(response)
+        }
+
+        return objectMapper.readValue(response.body()!!.string(),  object : TypeReference<List<TelemetryEvent>>(){})
     }
 
     private fun buildRequest(url: HttpUrl): Request {

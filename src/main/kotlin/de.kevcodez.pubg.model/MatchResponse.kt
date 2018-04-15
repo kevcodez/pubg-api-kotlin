@@ -20,7 +20,6 @@ data class MatchAttributes(
     val duration: Int,
     val gameMode: String,
     val mapName: String,
-    val patchVersion: String,
     val shardId: String,
     val stats: Any?,
     val tags: Any?,
