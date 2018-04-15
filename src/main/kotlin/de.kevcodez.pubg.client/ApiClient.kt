@@ -1,7 +1,9 @@
 package de.kevcodez.pubg.client
 
 import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import de.kevcodez.pubg.exception.ApiException
 import de.kevcodez.pubg.model.MatchResponse
@@ -15,9 +17,12 @@ import org.slf4j.LoggerFactory
 
 class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient) {
 
-    private val objectMapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
+    private val objectMapper: ObjectMapper = ObjectMapper()
+        .registerModule(KotlinModule())
+        .registerModule(JavaTimeModule())
+        .enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)
 
-    fun getPlayer(region: Region, id: String) : PlayerResponse {
+    fun getPlayer(region: Region, id: String): PlayerResponse {
         val urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
@@ -36,7 +41,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         return objectMapper.readValue(response.body()!!.string(), PlayerResponse::class.java)
     }
 
-    fun getPlayers(region: Region, playerFilter: PlayerFilter) : PlayerResponse {
+    fun getPlayers(region: Region, playerFilter: PlayerFilter): PlayerResponse {
         var urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
@@ -48,7 +53,8 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerIds]", playerFilter.playerIds.joinToString())
 
         if (playerFilter.playerNames.isNotEmpty())
-            urlBuilder =  urlBuilder.addEncodedQueryParameter("filter[playerNames]", playerFilter.playerNames.joinToString())
+            urlBuilder =
+                    urlBuilder.addEncodedQueryParameter("filter[playerNames]", playerFilter.playerNames.joinToString())
 
 
         val request = buildRequest(urlBuilder.build())
@@ -87,7 +93,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         return objectMapper.readValue(bodyAsString, MatchResponse::class.java)
     }
 
-    fun getTelemetryData(URL: String) : List<TelemetryEvent> {
+    fun getTelemetryData(URL: String): List<TelemetryEvent> {
         val httpUrl = HttpUrl.parse(URL)!!
 
         val request = buildRequest(httpUrl)
@@ -97,7 +103,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             throw ApiException(response)
         }
 
-        return objectMapper.readValue(response.body()!!.string(),  object : TypeReference<List<TelemetryEvent>>(){})
+        return objectMapper.readValue(response.body()!!.string(), object : TypeReference<List<TelemetryEvent>>() {})
     }
 
     private fun buildRequest(url: HttpUrl): Request {

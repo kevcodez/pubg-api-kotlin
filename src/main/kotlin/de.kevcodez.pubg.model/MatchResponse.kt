@@ -1,5 +1,7 @@
 package de.kevcodez.pubg.model
 
+import java.time.Instant
+
 data class MatchResponse(
     val data: MatchData,
     val included: List<ObjectWithType>,
@@ -16,7 +18,7 @@ data class MatchData(
 )
 
 data class MatchAttributes(
-    val createdAt: String,
+    val createdAt: Instant,
     val duration: Int,
     val gameMode: String,
     val mapName: String,

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import de.kevcodez.pubg.model.telemetry.objects.Common
+import java.time.Instant
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "_T")
 @JsonSubTypes(
@@ -37,7 +38,7 @@ open class TelemetryEvent {
     lateinit var version: String
 
     @JsonProperty("_D")
-    lateinit var timestamp: String
+    lateinit var timestamp: Instant
 
     var common: Common? = null
 

@@ -1,8 +1,10 @@
 package de.kevcodez.pubg.model
 
+import java.time.Instant
+
 data class PlayerAttributes(
-    val createdAt: String,
-    val updatedAt: String,
+    val createdAt: Instant,
+    val updatedAt: Instant,
     /** Player name */
     val name: String,
     /** Stats particular to players */

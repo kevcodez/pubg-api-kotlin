@@ -1,5 +1,7 @@
 package de.kevcodez.pubg.model
 
+import java.time.Instant
+
 class Asset : ObjectWithType() {
     lateinit var id: String
     lateinit var attributes: AssetAttributes
@@ -7,7 +9,7 @@ class Asset : ObjectWithType() {
 
 data class AssetAttributes(
     val URL: String,
-    val createdAt: String,
+    val createdAt: Instant,
     val description: String,
     val name: String
 )
