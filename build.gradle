@@ -1,16 +1,4 @@
-group = 'de.kevcodez.pubg.api'
-version = '1.0-SNAPSHOT'
 
-ext {
-    // compile
-    jackson_version = "2.9.5"
-    okhttp_version = "3.10.0"
-    slf4j_version = "1.7.25"
-
-    // test
-    junit_version = "5.1.1"
-    mockito_kotlin_version = "1.5.0"
-}
 
 buildscript {
 
@@ -23,12 +11,42 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
+        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
     }
+
 }
+
+
+plugins {
+    id 'io.codearte.nexus-staging' version '0.11.0'
+}
+
+nexusStaging {
+    packageGroup = "de.kevcodez.pubg"
+}
+
+ext {
+    // compile
+    jackson_version = "2.9.5"
+    okhttp_version = "3.10.0"
+    slf4j_version = "1.7.25"
+
+    // test
+    junit_version = "5.1.1"
+    mockito_kotlin_version = "1.5.0"
+}
+
+
 
 apply plugin: 'idea'
 apply plugin: 'org.junit.platform.gradle.plugin'
 apply plugin: 'kotlin'
+apply plugin: 'com.bmuschko.nexus'
+apply plugin: 'io.codearte.nexus-staging'
+
+version = "0.1.0"
+archivesBaseName = 'pubg-api-wrapper'
+group = 'de.kevcodez.pubg'
 
 repositories {
     mavenCentral()
@@ -58,3 +76,48 @@ compileTestKotlin {
         jvmTarget = "1.8"
     }
 }
+
+
+
+modifyPom {
+    project {
+        name 'PUBG-API-Wrapper'
+        description 'Teaching how to use gradle.'
+        url 'https://github.com/kevcodez/pubg-api-kotlin'
+        inceptionYear '2018'
+        scm {
+            url 'https://github.com/kevcodez/pubg-api-kotlin'
+            connection 'scm:https://github.com/kevcodez/pubg-api-kotlin.git'
+            developerConnection 'scm:git://github.com/kevcodez/pubg-api-kotlin.git'
+        }
+        licenses {
+            license {
+                name 'MIT License'
+                url 'https://github.com/kevcodez/pubg-api-kotlin/blob/master/LICENSE'
+                distribution 'repo'
+            }
+        }
+        developers {
+            developer {
+                id 'kevcodez'
+                name 'Kevin Grüneberg'
+                email 'k.grueneberg1994@gmailcom'
+            }
+        }
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = false
+    javadoc = true
+}
+
+nexus {
+    sign = true
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+}
+
+
+
