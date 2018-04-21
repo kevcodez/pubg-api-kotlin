@@ -6,7 +6,7 @@ enum class Region(val identifier: String) {
     XBOX_EUROPE("xbox-eu"),
     XBOX_NORTH_AMERICA("xbox-na"),
     XBOX_OCEANIA("xbox-oc"),
-    PC_KOREA_JAPAN("pc-as"),
+    PC_KOREA_JAPAN("pc-krjp"),
     PC_NORTH_AMERICA("pc-na"),
     PC_EUROPE("pc-eu"),
     PC_OCEANIA("pc-oc"),
