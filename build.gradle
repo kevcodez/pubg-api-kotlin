@@ -1,8 +1,6 @@
-
-
 buildscript {
 
-    ext.kotlin_version = "1.2.31"
+    ext.kotlin_version = "1.2.41"
 
     repositories {
         mavenCentral()
@@ -10,12 +8,11 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
-        classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.1.1"
+        classpath "com.bmuschko:gradle-nexus-plugin:2.3.1"
     }
 
 }
-
 
 plugins {
     id 'io.codearte.nexus-staging' version '0.11.0'
@@ -35,8 +32,6 @@ ext {
     junit_version = "5.1.1"
     mockito_kotlin_version = "1.5.0"
 }
-
-
 
 apply plugin: 'idea'
 apply plugin: 'org.junit.platform.gradle.plugin'
@@ -59,8 +54,8 @@ dependencies {
     compile "com.squareup.okhttp3:okhttp:$okhttp_version"
     compile "org.slf4j:slf4j-api:$slf4j_version"
 
-    testCompile "org.junit.jupiter:junit-jupiter-api:$junit_version"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junit_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
     testCompile "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
     testCompile "org.slf4j:slf4j-simple:$slf4j_version"
 }
@@ -77,7 +72,9 @@ compileTestKotlin {
     }
 }
 
-
+test {
+    useJUnitPlatform()
+}
 
 modifyPom {
     project {
@@ -118,6 +115,3 @@ nexus {
     snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
     repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
 }
-
-
-
