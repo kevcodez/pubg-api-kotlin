@@ -29,7 +29,7 @@ ext {
     slf4j_version = "1.7.25"
 
     // test
-    junit_version = "5.1.1"
+    junit_version = "5.2.0"
     mockito_kotlin_version = "1.5.0"
 }
 
