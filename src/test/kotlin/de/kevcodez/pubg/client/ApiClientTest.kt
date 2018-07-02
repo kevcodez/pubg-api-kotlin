@@ -1,15 +1,14 @@
 package de.kevcodez.pubg.client
 
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.whenever
 import de.kevcodez.pubg.model.Region
+import io.mockk.every
+import io.mockk.mockk
 import okhttp3.*
 import org.junit.jupiter.api.Test
 
 class ApiClientTest {
 
-    private val httpClient: OkHttpClient = mock()
+    private val httpClient: OkHttpClient = mockk()
     private val apiKey = "API-KEY"
 
     private val apiClient = ApiClient(apiKey, httpClient)
@@ -62,16 +61,17 @@ class ApiClientTest {
     }
 
     private fun mockResponse(resource: String) {
-        val mockedResponse: Response = mock()
-        whenever(mockedResponse.code()).thenReturn(200)
-        whenever(mockedResponse.body()).thenReturn(
-            ResponseBody.create(
-                MediaType.parse("application/json"),
-                ApiClientTest::class.java.getResource(resource).readText()
-            )
-        )
-        val mockedCall: Call = mock()
-        whenever(httpClient.newCall(any())).thenReturn(mockedCall)
-        whenever(mockedCall.execute()).thenReturn(mockedResponse)
+        val text = ApiClientTest::class.java.getResource(resource).readText()
+        val mockedResponse: Response = mockk()
+        every { mockedResponse.code() } returns 200
+        every { mockedResponse.body() } returns
+                ResponseBody.create(
+                    MediaType.parse("application/json"),
+                    text
+                )!!
+
+        val mockedCall: Call = mockk()
+        every { httpClient.newCall(any()) } returns mockedCall
+        every { mockedCall.execute() } returns mockedResponse
     }
 }
