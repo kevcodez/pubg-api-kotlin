@@ -1,7 +1,8 @@
 package de.kevcodez.pubg.model.telemetry.objects
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class Common(
-    val matchId: String,
-    val mapName: String,
+    @JsonProperty("isGame")
     val isGame: Float
 )

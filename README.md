@@ -17,14 +17,14 @@ The releases are pushed to maven central. Include the latest release in your bui
 <dependency>
     <groupId>de.kevcodez.pubg</groupId>
     <artifactId>pubg-api-wrapper</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
 ## Gradle
 
 ```groovy
-compile "de.kevcodez.pubg:pubg-api-wrapper:0.1.0"
+compile "de.kevcodez.pubg:pubg-api-wrapper:0.2.0"
 ```
 
 ## API Key

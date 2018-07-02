@@ -1,17 +1,16 @@
 package de.kevcodez.pubg.model
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 
+@JsonIgnoreProperties("team", "rounds", "spectators")
 data class Relationships(
     var matchIds: List<String>?,
     var participantIds: List<String>?,
-    val team: Any?, // TODO missing an example
     var assetIds: List<String>?,
-    var rosterIds: List<String>?,
-    val rounds: Any?, // TODO missing an example
-    val spectators: Any? // TODO missing an example
+    var rosterIds: List<String>?
 ) {
     @JsonProperty("participants")
     private fun unpackParticipantIds(participants: JsonNode) {

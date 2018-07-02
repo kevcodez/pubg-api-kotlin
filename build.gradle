@@ -1,6 +1,6 @@
 buildscript {
 
-    ext.kotlin_version = "1.2.41"
+    ext.kotlin_version = "1.2.50"
 
     repositories {
         mavenCentral()
@@ -8,7 +8,7 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.junit.platform:junit-platform-gradle-plugin:1.1.1"
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.2.0"
         classpath "com.bmuschko:gradle-nexus-plugin:2.3.1"
     }
 
@@ -24,13 +24,13 @@ nexusStaging {
 
 ext {
     // compile
-    jackson_version = "2.9.5"
+    jackson_version = "2.9.6"
     okhttp_version = "3.10.0"
     slf4j_version = "1.7.25"
 
     // test
     junit_version = "5.2.0"
-    mockito_kotlin_version = "1.5.0"
+    mockito_kotlin_version = "1.6.0"
 }
 
 apply plugin: 'idea'
@@ -39,7 +39,7 @@ apply plugin: 'kotlin'
 apply plugin: 'com.bmuschko.nexus'
 apply plugin: 'io.codearte.nexus-staging'
 
-version = "0.1.1"
+version = "0.2.0"
 archivesBaseName = 'pubg-api-wrapper'
 group = 'de.kevcodez.pubg'
 

@@ -1,58 +1,134 @@
 {
-  "data": [
-    {
-      "type": "player",
-      "id": "account.f8c9fdd3277742409f6a6917a00eee01",
-      "attributes": {
-        "createdAt": "2018-04-05T20:42:53Z",
-        "name": "HazeZombie",
-        "patchVersion": "",
-        "shardId": "pc-eu",
-        "stats": null,
-        "titleId": "bluehole-pubg",
-        "updatedAt": "2018-04-05T20:42:53Z"
+  "data": {
+    "type": "player",
+    "id": "account.6ecff76831934634a75dc699a3b316fb",
+    "attributes": {
+      "name": "nwilson75",
+      "stats": null,
+      "titleId": "bluehole-pubg",
+      "shardId": "pc-na",
+      "patchVersion": ""
+    },
+    "relationships": {
+      "assets": {
+        "data": []
       },
-      "relationships": {
-        "assets": {
-          "data": []
-        },
-        "matches": {
-          "data": [
-            {
-              "type": "match",
-              "id": "4b69b538-3d1a-4dee-b2a5-80fcc3b7e73e"
-            },
-            {
-              "type": "match",
-              "id": "fc6db7bd-f16b-43e5-aa2d-1d6e2a66c57c"
-            },
-            {
-              "type": "match",
-              "id": "b1c35f7e-eaf8-49c7-9924-d36b74609069"
-            },
-            {
-              "type": "match",
-              "id": "0923f6a0-053d-4e9e-9813-28672ff025ce"
-            },
-            {
-              "type": "match",
-              "id": "76a9290b-eb1a-47e9-9d43-f7568d3ca07c"
-            },
-            {
-              "type": "match",
-              "id": "c1ddf724-ffa7-4e51-98ce-2a2f73723fbf"
-            }
-          ]
-        }
-      },
-      "links": {
-        "schema": "",
-        "self": "https://api.playbattlegrounds.com/shards/pc-eu/players/account.f8c9fdd3277742409f6a6917a00eee01"
+      "matches": {
+        "data": [
+          {
+            "type": "match",
+            "id": "88f58b94-0c3e-4410-a26e-3b2b9dad9f85"
+          },
+          {
+            "type": "match",
+            "id": "1d10b98f-3375-4b41-a26c-103be7b5c4ee"
+          },
+          {
+            "type": "match",
+            "id": "c05760a6-6c88-4ba3-9141-c3395d9b867a"
+          },
+          {
+            "type": "match",
+            "id": "d0a2c408-75ed-4609-b356-add96338598e"
+          },
+          {
+            "type": "match",
+            "id": "88939ebf-602b-41b6-89ee-239e40de3604"
+          },
+          {
+            "type": "match",
+            "id": "f1c5a265-a7d4-4006-9a39-0962a5a34098"
+          },
+          {
+            "type": "match",
+            "id": "5942091c-c1d8-462c-bf37-135b080ecf50"
+          },
+          {
+            "type": "match",
+            "id": "0a9e64e6-593b-47b2-8e99-c8d3b9d008ab"
+          },
+          {
+            "type": "match",
+            "id": "0fa3c3d4-7ec1-4138-a939-21cbb3cc1e4c"
+          },
+          {
+            "type": "match",
+            "id": "c7e523e5-aeb0-4cd4-834f-32809b1df890"
+          },
+          {
+            "type": "match",
+            "id": "f2c2ac5b-30b4-400b-a7f6-9290fe1b8a81"
+          },
+          {
+            "type": "match",
+            "id": "e5dd9895-6117-4fd0-ab60-9f0f06b33bfc"
+          },
+          {
+            "type": "match",
+            "id": "8a28861c-4515-4ed0-9ca1-94619f9f8614"
+          },
+          {
+            "type": "match",
+            "id": "c7668aef-2e31-42dc-86b5-75922b733344"
+          },
+          {
+            "type": "match",
+            "id": "c8d9b6b6-e718-4f54-b008-1f970cb22e4e"
+          },
+          {
+            "type": "match",
+            "id": "a4a63638-9f99-4426-a9b5-4dbddeb6f190"
+          },
+          {
+            "type": "match",
+            "id": "2b6ccdcb-7166-4b3f-a57d-aea408b0f128"
+          },
+          {
+            "type": "match",
+            "id": "e60c9239-fd2b-4ca2-bcfd-841fdd27b27a"
+          },
+          {
+            "type": "match",
+            "id": "0cf1a3dc-fe9e-4e8e-b307-4da2db755c3e"
+          },
+          {
+            "type": "match",
+            "id": "2d94cbd7-c05c-471c-a189-b8dfa34d7d3b"
+          },
+          {
+            "type": "match",
+            "id": "61c4c164-88f3-46c8-a711-0deb13237a18"
+          },
+          {
+            "type": "match",
+            "id": "7b023d99-8cd8-4284-950e-dfce48001342"
+          },
+          {
+            "type": "match",
+            "id": "b2364b3a-fb7d-4640-8283-ba8a9672f9a3"
+          },
+          {
+            "type": "match",
+            "id": "a9f0ccfc-d88c-41a0-a4a7-b28db59f56ba"
+          },
+          {
+            "type": "match",
+            "id": "151a2170-2785-4ab1-a181-3a2786fd2bd7"
+          },
+          {
+            "type": "match",
+            "id": "a842e2de-082d-4143-a0c4-07f07448bb3d"
+          }
+        ]
       }
+    },
+    "links": {
+      "schema": "",
+      "self": "https://api.playbattlegrounds.com/shards/pc-na/players/account.6ecff76831934634a75dc699a3b316fb"
     }
-  ],
+  },
   "links": {
-    "self": "https://api.playbattlegrounds.com/shards/pc-eu/players?filter[playerNames]=HazeZombie"
+    "self": "https://api.playbattlegrounds.com/shards/pc-na/players/account.6ecff76831934634a75dc699a3b316fb"
   },
   "meta": {}
 }

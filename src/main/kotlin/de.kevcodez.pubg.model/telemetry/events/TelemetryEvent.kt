@@ -30,12 +30,15 @@ import java.time.Instant
     JsonSubTypes.Type(value = CarePackageSpawn::class, name = "LogCarePackageSpawn"),
     JsonSubTypes.Type(value = VehicleDestroy::class, name = "LogVehicleDestroy"),
     JsonSubTypes.Type(value = CarePackageLand::class, name = "LogCarePackageLand"),
-    JsonSubTypes.Type(value = MatchEnd::class, name = "LogMatchEnd")
+    JsonSubTypes.Type(value = MatchEnd::class, name = "LogMatchEnd"),
+    JsonSubTypes.Type(value = SwimEnd::class, name = "LogSwimEnd"),
+    JsonSubTypes.Type(value = SwimStart::class, name = "LogSwimStart"),
+    JsonSubTypes.Type(value = PlayerMakeGroggy::class, name = "LogPlayerMakeGroggy"),
+    JsonSubTypes.Type(value = ArmorDestroy::class, name = "LogArmorDestroy"),
+    JsonSubTypes.Type(value = PlayerRevive::class, name = "LogPlayerRevive"),
+    JsonSubTypes.Type(value = WheelDestroy::class, name = "LogWheelDestroy")
 )
 open class TelemetryEvent {
-
-    @JsonProperty("_V")
-    lateinit var version: String
 
     @JsonProperty("_D")
     lateinit var timestamp: Instant

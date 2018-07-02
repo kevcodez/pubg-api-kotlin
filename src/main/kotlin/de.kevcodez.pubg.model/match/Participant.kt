@@ -42,5 +42,6 @@ data class ParticipantStats(
     val weaponsAcquired: Int,
     val winPlace: Int,
     val winPoints: Int,
-    val winPointsDelta: Double
+    val winPointsDelta: Double,
+    val swimDistance: Double
 )

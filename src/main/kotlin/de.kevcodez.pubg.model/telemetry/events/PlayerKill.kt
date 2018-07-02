@@ -8,5 +8,6 @@ class PlayerKill : TelemetryEvent() {
     lateinit var victim: Character
     lateinit var damageTypeCategory: String
     lateinit var damageCauserName: String
+    lateinit var damageReason: String
     var distance: Float = 0.0F
 }
