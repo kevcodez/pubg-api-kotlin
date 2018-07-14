@@ -57,11 +57,10 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             .addPathSegment("players")
 
         if (playerFilter.playerIds.isNotEmpty())
-            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerIds]", playerFilter.playerIds.joinToString())
+            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerIds]", playerFilter.playerIds.joinToString(","))
 
         if (playerFilter.playerNames.isNotEmpty())
-            urlBuilder =
-                    urlBuilder.addEncodedQueryParameter("filter[playerNames]", playerFilter.playerNames.joinToString())
+            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerNames]", playerFilter.playerNames.joinToString(","))
 
 
         val request = buildRequest(urlBuilder.build())
@@ -72,7 +71,6 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         }
 
         val bodyAsString = response.body()!!.string()
-        println(bodyAsString)
         return objectMapper.readValue(bodyAsString, PlayersResponse::class.java)
     }
 
