@@ -31,8 +31,10 @@ class ApiClientTest {
 
     @Test
     fun getPlayers() {
-        mockResponse("/examples/player.json")
+        mockResponse("/examples/players.json")
         val playersResponse = apiClient.getPlayers(region = Region.PC_ASIA, playerFilter = PlayerFilter())
+
+        // TODO proper assertions
     }
 
     @Test

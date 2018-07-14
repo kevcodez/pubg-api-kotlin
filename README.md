@@ -49,7 +49,7 @@ You can search for players by their ID/name or get information about a specific 
 ### Searching for players by id/name
 
 ```kotlin
-val playerResponse = apiClient.getPlayers(Region.PC_EUROPE, ApiClient.PlayerFilter(playerNames = listOf("HazeZombie")))
+val playerResponse = apiClient.getPlayers(Region.PC_NORTH_AMERICA, PlayerFilter(playerNames = listOf("shroud")))
 playerResponse.players.forEach { 
     println(it.id)
 }

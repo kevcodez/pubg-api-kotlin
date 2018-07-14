@@ -37,7 +37,7 @@ apply plugin: 'kotlin'
 apply plugin: 'com.bmuschko.nexus'
 apply plugin: 'io.codearte.nexus-staging'
 
-version = "0.2.0"
+version = "0.2.1"
 archivesBaseName = 'pubg-api-wrapper'
 group = 'de.kevcodez.pubg'
 

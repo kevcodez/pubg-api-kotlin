@@ -9,6 +9,7 @@ import de.kevcodez.pubg.exception.ApiException
 import de.kevcodez.pubg.model.Region
 import de.kevcodez.pubg.model.match.MatchResponse
 import de.kevcodez.pubg.model.player.PlayerResponse
+import de.kevcodez.pubg.model.player.PlayersResponse
 import de.kevcodez.pubg.model.season.Season
 import de.kevcodez.pubg.model.season.SeasonResponse
 import de.kevcodez.pubg.model.status.Status
@@ -47,7 +48,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         return objectMapper.readValue(response.body()!!.string(), PlayerResponse::class.java)
     }
 
-    fun getPlayers(region: Region, playerFilter: PlayerFilter): PlayerResponse {
+    fun getPlayers(region: Region, playerFilter: PlayerFilter): PlayersResponse {
         var urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
@@ -71,7 +72,8 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         }
 
         val bodyAsString = response.body()!!.string()
-        return objectMapper.readValue(bodyAsString, PlayerResponse::class.java)
+        println(bodyAsString)
+        return objectMapper.readValue(bodyAsString, PlayersResponse::class.java)
     }
 
     fun getMatch(region: Region, id: String): MatchResponse {
