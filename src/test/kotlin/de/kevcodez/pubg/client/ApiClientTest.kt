@@ -81,7 +81,7 @@ class ApiClientTest {
     private fun mockResponse(resource: String) {
         val text = ApiClientTest::class.java.getResource(resource).readText()
         val mockedResponse: Response = mockk()
-        every { mockedResponse.code() } returns 200
+        every { mockedResponse.isSuccessful } returns true
         every { mockedResponse.body() } returns
                 ResponseBody.create(
                     MediaType.parse("application/json"),
