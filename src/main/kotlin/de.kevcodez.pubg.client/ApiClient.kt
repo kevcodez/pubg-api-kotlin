@@ -19,6 +19,7 @@ import de.kevcodez.pubg.model.tournament.TournamentsResponse
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.Response
 import org.slf4j.LoggerFactory
 
 class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient) {
@@ -43,9 +44,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val request = buildRequest(urlBuilder.build())
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         return objectMapper.readValue(response.body()!!.string(), PlayerResponse::class.java)
     }
@@ -58,19 +57,20 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             .addPathSegment(region.identifier)
             .addPathSegment("players")
 
-        if (playerFilter.playerIds.isNotEmpty())
-            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerIds]", playerFilter.playerIds.joinToString(","))
+        if (playerFilter.playerIds.isNotEmpty()) {
+            val playerIds = playerFilter.playerIds.joinToString(",")
+            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerIds]", playerIds)
+        }
 
-        if (playerFilter.playerNames.isNotEmpty())
-            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerNames]", playerFilter.playerNames.joinToString(","))
-
+        if (playerFilter.playerNames.isNotEmpty()) {
+            val playerNames = playerFilter.playerNames.joinToString(",")
+            urlBuilder = urlBuilder.addEncodedQueryParameter("filter[playerNames]", playerNames)
+        }
 
         val request = buildRequest(urlBuilder.build())
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         val bodyAsString = response.body()!!.string()
         return objectMapper.readValue(bodyAsString, PlayersResponse::class.java)
@@ -88,9 +88,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val request = buildRequest(urlBuilder.build())
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         val bodyAsString = response.body()!!.string()
         return objectMapper.readValue(bodyAsString, MatchResponse::class.java)
@@ -102,9 +100,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val request = buildRequest(httpUrl)
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         return objectMapper.readValue(response.body()!!.string(), object : TypeReference<List<TelemetryEvent>>() {})
     }
@@ -120,9 +116,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val request = buildRequest(urlBuilder.build())
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         val bodyAsString = response.body()!!.string()
         return objectMapper.readValue(bodyAsString, SeasonResponse::class.java)
@@ -137,9 +131,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val request = buildRequest(urlBuilder.build())
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         val bodyAsString = response.body()!!.string()
         return objectMapper.readValue(bodyAsString, TournamentsResponse::class.java)
@@ -155,9 +147,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val request = buildRequest(urlBuilder.build())
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         val bodyAsString = response.body()!!.string()
         return objectMapper.readValue(bodyAsString, TournamentResponse::class.java)
@@ -173,9 +163,7 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val request = buildRequest(urlBuilder.build())
 
         val response = httpClient.newCall(request).execute()
-        if (response.code() != 200) {
-            throw ApiException(response)
-        }
+        validateResponse(response)
 
         return objectMapper.readValue(response.body()!!.string(), Status::class.java)
     }
@@ -186,6 +174,12 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
             .addHeader("Authorization", "Bearer $apiKey")
             .addHeader("Accept", "application/vnd.api+json")
             .build()
+    }
+
+    private fun validateResponse(response: Response) {
+        if (!response.isSuccessful) {
+            throw ApiException(response)
+        }
     }
 
     companion object {

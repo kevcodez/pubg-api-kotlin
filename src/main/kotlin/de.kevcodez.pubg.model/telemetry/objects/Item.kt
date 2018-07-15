@@ -11,8 +11,6 @@ data class Item(
     var itemCategory: Category? = null,
     var itemSubCategory: SubCategory?,
     val attachedItems: List<String>
-
-
 ) {
     @JsonProperty("category")
     private fun unpackCategory(category: JsonNode) {
