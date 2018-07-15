@@ -2,11 +2,27 @@ PUBG API wrapper written in Kotlin. Requires Java 1.8+.
 
 [Official API Page](https://developer.playbattlegrounds.com)
 
-
 ![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/de/kevcodez/pubg/pubg-api-wrapper/maven-metadata.xml.svg)
  [![Build Status](https://travis-ci.org/kevcodez/pubg-api-kotlin.svg?branch=master)](https://travis-ci.org/kevcodez/pubg-api-kotlin)
 [![GitHub license](https://img.shields.io/github/license/kevcodez/pubg-api-kotlin.svg)](https://github.com/kevcodez/pubg-api-kotlin/blob/master/LICENSE)
 
+- [Getting started](#getting-started)
+  * [Maven](#maven)
+  * [Gradle](#gradle)
+  * [API Key](#api-key)
+  * [First request](#first-request)
+  * [Players](#players)
+    + [Searching for players by id/name](#searching-for-players-by-id-name)
+    + [Searching for player by ID](#searching-for-player-by-id)
+  * [Matches](#matches)
+    + [Searching for match by ID](#searching-for-match-by-id)
+  * [Tournaments](#tournaments)
+    + [Get all tournmanets](#get-all-tournmanets)
+    + [Get tournament by ID](#get-tournament-by-id)
+  * [Status](#status)
+  * [Telemetry data](#telemetry-data)
+- [Implementation](#implementation)
+- [Links](#links)
 
 # Getting started
 
