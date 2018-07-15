@@ -6,6 +6,8 @@ PUBG API wrapper written in Kotlin. Requires Java 1.8+.
  [![Build Status](https://travis-ci.org/kevcodez/pubg-api-kotlin.svg?branch=master)](https://travis-ci.org/kevcodez/pubg-api-kotlin)
 [![GitHub license](https://img.shields.io/github/license/kevcodez/pubg-api-kotlin.svg)](https://github.com/kevcodez/pubg-api-kotlin/blob/master/LICENSE)
 
+# Table of Contents
+
 - [Getting started](#getting-started)
   * [Maven](#maven)
   * [Gradle](#gradle)
