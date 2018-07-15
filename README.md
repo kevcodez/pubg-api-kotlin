@@ -12,17 +12,18 @@ PUBG API wrapper written in Kotlin. Requires Java 1.8+.
   * [Maven](#maven)
   * [Gradle](#gradle)
   * [API Key](#api-key)
-  * [First request](#first-request)
-  * [Players](#players)
-    + [Searching for players by id/name](#searching-for-players-by-id-name)
-    + [Searching for player by ID](#searching-for-player-by-id)
-  * [Matches](#matches)
-    + [Searching for match by ID](#searching-for-match-by-id)
-  * [Tournaments](#tournaments)
-    + [Get all tournmanets](#get-all-tournmanets)
-    + [Get tournament by ID](#get-tournament-by-id)
-  * [Status](#status)
-  * [Telemetry data](#telemetry-data)
+  * [Usage](#usage)
+    + [First request](#first-request)
+    + [Players](#players)
+      - [Searching for players by id/name](#searching-for-players-by-id-name)
+      - [Searching for player by ID](#searching-for-player-by-id)
+    + [Matches](#matches)
+      - [Searching for match by ID](#searching-for-match-by-id)
+    + [Tournaments](#tournaments)
+      - [Get all tournmanets](#get-all-tournmanets)
+      - [Get tournament by ID](#get-tournament-by-id)
+    + [Status](#status)
+    + [Telemetry data](#telemetry-data)
 - [Implementation](#implementation)
 - [Links](#links)
 
@@ -49,7 +50,9 @@ compile "de.kevcodez.pubg:pubg-api-wrapper:0.3.0"
 
 If you do not have an API key yet, go to the [Official API Page](https://developer.playbattlegrounds.com) and register.
 
-## First request
+## Usage
+
+### First request
 
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
@@ -60,11 +63,11 @@ println(match.duration)
 
 You can configure the [OkHttp3 Client](http://square.github.io/okhttp/) to register proxies or interceptors.
 
-## Players
+### Players
 
 You can search for players by their ID/name or get information about a specific player.
 
-### Searching for players by id/name
+#### Searching for players by id/name
 
 ```kotlin
 val playerResponse = apiClient.getPlayers(Region.PC_NORTH_AMERICA, PlayerFilter(playerNames = listOf("shroud")))
@@ -73,7 +76,7 @@ playerResponse.players.forEach {
 }
 ```
 
-### Searching for player by ID
+#### Searching for player by ID
 
 ```kotlin
 val playerResponse = apiClient.getPlayer(Region.PC_EUROPE, "<id>")
@@ -82,11 +85,11 @@ playerResponse.players.forEach {
 }
 ```
 
-## Matches
+### Matches
 
 You can only search for concrete matches by ID.
 
-### Searching for match by ID
+#### Searching for match by ID
 
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
@@ -95,23 +98,23 @@ val match = apiClient.getMatch(Region.PC_EUROPE, "id")
 println(match.duration)
 ```
 
-## Tournaments
+### Tournaments
 
-### Get all tournmanets
+#### Get all tournmanets
 
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
 val tournaments = apiClient.getTournaments()
 ```
 
-### Get tournament by ID
+#### Get tournament by ID
 
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
 val tournament = apiClient.getTournament("<id>")
 ```
 
-## Status
+### Status
 
 ```kotlin
 val status = apiClient.getStatus()
@@ -119,7 +122,7 @@ println(status.releasedAt)
 println(status.version)
 ```
 
-## Telemetry data
+### Telemetry data
 
 Check the de.kevcodez.pubg.model.telemetry package for all structures. The telemetry data contains a list of telemetry events.
 
