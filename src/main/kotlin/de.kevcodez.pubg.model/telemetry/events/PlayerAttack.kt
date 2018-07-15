@@ -10,5 +10,5 @@ class PlayerAttack : TelemetryEvent() {
     lateinit var attacker: Character
     lateinit var attackType: AttackType
     lateinit var weapon: Item
-    lateinit var vehicle: Vehicle
+    var vehicle: Vehicle? = null
 }

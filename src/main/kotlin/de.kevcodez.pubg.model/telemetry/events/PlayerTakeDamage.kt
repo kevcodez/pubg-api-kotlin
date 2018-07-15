@@ -5,7 +5,7 @@ import de.kevcodez.pubg.model.telemetry.objects.Character
 
 class PlayerTakeDamage : TelemetryEvent() {
     var attackId: Int = 0
-    lateinit var attacker: Character
+    var attacker: Character? = null
     lateinit var victim: Character
     lateinit var damageTypeCategory: String
     lateinit var damageReason: DamageReason
