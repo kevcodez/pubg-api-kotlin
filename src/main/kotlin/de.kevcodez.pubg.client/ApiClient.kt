@@ -14,6 +14,8 @@ import de.kevcodez.pubg.model.season.Season
 import de.kevcodez.pubg.model.season.SeasonResponse
 import de.kevcodez.pubg.model.status.Status
 import de.kevcodez.pubg.model.telemetry.events.TelemetryEvent
+import de.kevcodez.pubg.model.tournament.TournamentResponse
+import de.kevcodez.pubg.model.tournament.TournamentsResponse
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -125,6 +127,42 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         val bodyAsString = response.body()!!.string()
         return objectMapper.readValue(bodyAsString, SeasonResponse::class.java)
     }
+
+    fun getTournaments(): TournamentsResponse {
+        val urlBuilder = HttpUrl.Builder()
+            .scheme(API_SCHEME)
+            .host(API_HOST)
+            .addPathSegment("tournments")
+
+        val request = buildRequest(urlBuilder.build())
+
+        val response = httpClient.newCall(request).execute()
+        if (response.code() != 200) {
+            throw ApiException(response)
+        }
+
+        val bodyAsString = response.body()!!.string()
+        return objectMapper.readValue(bodyAsString, TournamentsResponse::class.java)
+    }
+
+    fun getTournament(id: String): TournamentResponse {
+        val urlBuilder = HttpUrl.Builder()
+            .scheme(API_SCHEME)
+            .host(API_HOST)
+            .addPathSegment("tournments")
+            .addPathSegment(id)
+
+        val request = buildRequest(urlBuilder.build())
+
+        val response = httpClient.newCall(request).execute()
+        if (response.code() != 200) {
+            throw ApiException(response)
+        }
+
+        val bodyAsString = response.body()!!.string()
+        return objectMapper.readValue(bodyAsString, TournamentResponse::class.java)
+    }
+
 
     fun getStatus(): Status {
         val urlBuilder = HttpUrl.Builder()

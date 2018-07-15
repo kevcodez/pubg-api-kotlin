@@ -77,6 +77,22 @@ val match = apiClient.getMatch(Region.PC_EUROPE, "id")
 println(match.duration)
 ```
 
+## Tournaments
+
+### Get all tournmanets
+
+```kotlin
+val apiClient = ApiClient("my-key", OkHttpClient())
+val tournaments = apiClient.getTournaments()
+```
+
+### Get tournament by ID
+
+```kotlin
+val apiClient = ApiClient("my-key", OkHttpClient())
+val tournament = apiClient.getTournament("<id>")
+```
+
 ## Status
 
 ```kotlin

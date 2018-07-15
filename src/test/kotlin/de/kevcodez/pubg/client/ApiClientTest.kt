@@ -55,6 +55,22 @@ class ApiClientTest {
     }
 
     @Test
+    fun getTournaments() {
+        mockResponse("/examples/tournaments.json")
+        val tournaments = apiClient.getTournaments()
+
+        // TODO assertions
+    }
+
+    @Test
+    fun getTournmanet() {
+        mockResponse("/examples/tournament.json")
+        val tournament = apiClient.getTournament("123")
+
+        // TODO assertions
+    }
+
+    @Test
     fun getStatus() {
         mockResponse("/examples/status.json")
         val status = apiClient.getStatus()
