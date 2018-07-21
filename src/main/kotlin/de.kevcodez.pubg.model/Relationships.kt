@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 
-@JsonIgnoreProperties("team", "rounds", "spectators")
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Relationships(
     var matchIds: List<String>?,
     var participantIds: List<String>?,

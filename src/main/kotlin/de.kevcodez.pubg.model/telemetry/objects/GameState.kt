@@ -1,5 +1,8 @@
 package de.kevcodez.pubg.model.telemetry.objects
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class GameState(
     val elapsedTime: Int,
     val numAliveTeams: Int,

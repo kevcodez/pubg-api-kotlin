@@ -1,5 +1,6 @@
 package de.kevcodez.pubg.model.match
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import de.kevcodez.pubg.model.player.PlayerType
@@ -11,4 +12,5 @@ import de.kevcodez.pubg.model.player.PlayerType
     JsonSubTypes.Type(value = Asset::class, name = "asset"),
     JsonSubTypes.Type(value = PlayerType::class, name = "player")
 )
+@JsonIgnoreProperties(ignoreUnknown = true)
 open class MatchObject

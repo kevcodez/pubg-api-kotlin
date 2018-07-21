@@ -1,5 +1,7 @@
 package de.kevcodez.pubg.model.match
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+
 open class Participant : MatchObject() {
     var id: String = ""
     var actor: String = ""
@@ -7,12 +9,14 @@ open class Participant : MatchObject() {
     lateinit var attributes: ParticipantAttributes
 }
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class ParticipantAttributes(
     val stats: ParticipantStats,
     val actor: String,
     val shardId: String
 )
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class ParticipantStats(
     val DBNOs: Int,
     val assists: Int,

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ArrayNode
 import java.time.Instant
 
-@JsonIgnoreProperties("links", "meta")
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class TournamentResponse(
     @JsonProperty("data")
     val tournament: Tournament
@@ -32,6 +32,7 @@ data class TournamentResponse(
     }
 }
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class TournamentMatch(
     val matchId: String,
     val createdAt: Instant

@@ -1,8 +1,10 @@
 package de.kevcodez.pubg.model.season
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.JsonNode
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Season(
     val id: String,
     val type: String,

@@ -1,7 +1,9 @@
 package de.kevcodez.pubg.model.player
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.time.Instant
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class PlayerAttributes(
     /** Player name */
     val name: String,

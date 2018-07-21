@@ -5,6 +5,7 @@ import de.kevcodez.pubg.model.Link
 import de.kevcodez.pubg.model.Relationships
 import java.time.Instant
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class MatchResponse(
     val data: MatchData,
     val included: List<MatchObject>,
@@ -12,6 +13,7 @@ data class MatchResponse(
     val meta: Any
 )
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class MatchData(
     val type: String,
     val id: String,

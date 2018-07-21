@@ -1,5 +1,6 @@
 package de.kevcodez.pubg.model.telemetry.events
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
@@ -38,6 +39,7 @@ import java.time.Instant
     JsonSubTypes.Type(value = PlayerRevive::class, name = "LogPlayerRevive"),
     JsonSubTypes.Type(value = WheelDestroy::class, name = "LogWheelDestroy")
 )
+@JsonIgnoreProperties(ignoreUnknown = true)
 open class TelemetryEvent {
 
     @JsonProperty("_D")

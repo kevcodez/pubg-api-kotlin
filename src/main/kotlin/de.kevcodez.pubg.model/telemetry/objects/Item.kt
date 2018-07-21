@@ -1,10 +1,12 @@
 package de.kevcodez.pubg.model.telemetry.objects
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.JsonNode
 import de.kevcodez.pubg.model.telemetry.enums.Category
 import de.kevcodez.pubg.model.telemetry.enums.SubCategory
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Item(
     val itemId: String,
     val stackCount: Int,
