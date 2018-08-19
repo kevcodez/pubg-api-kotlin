@@ -33,6 +33,7 @@ apply plugin: 'idea'
 apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
+apply plugin: 'jacoco'
 
 version = "0.3.2"
 archivesBaseName = 'pubg-api-wrapper'
@@ -69,6 +70,22 @@ compileTestKotlin {
 
 test {
     useJUnitPlatform()
+    jacoco {
+        destinationFile = file("${buildDir}/jacoco/test.exec")
+    }
+}
+
+test.finalizedBy(jacocoTestReport)
+
+jacoco {
+    toolVersion = "0.8.1"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
 }
 
 task sourcesJar(type: Jar) {
