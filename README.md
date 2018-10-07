@@ -22,6 +22,9 @@ PUBG API wrapper written in Kotlin. Requires Java 1.8+.
   * [Tournaments](#tournaments)
     + [Get all tournmanets](#get-all-tournmanets)
     + [Get tournament by ID](#get-tournament-by-id)
+  * [Seasons](#seasons)
+    + [Get seasons](#get-seasons)  
+    + [Get player season](#get-player-season)  
   * [Status](#status)
   * [Telemetry data](#telemetry-data)
 - [Implementation](#implementation)
@@ -112,6 +115,22 @@ val tournaments = apiClient.getTournaments()
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
 val tournament = apiClient.getTournament("<id>")
+```
+
+## Seasons
+
+### Get seasons
+
+```kotlin
+val apiClient = ApiClient("my-key", OkHttpClient())
+val seasons = apiClient.getSeasons(Region.PC_EUROPE)
+```
+
+### Get player season
+
+```kotlin
+val apiClient = ApiClient("my-key", OkHttpClient())
+val season = apiClient.getSeason(Region.PC_EUROPE, "account-id", "seasonId")
 ```
 
 ## Status
