@@ -26,7 +26,9 @@ data class ParticipantStats(
     val headshotKills: Int,
     val heals: Int,
     val killPlace: Int,
+    @Deprecated("Deprecated in API Version 6.0.0")
     val killPoints: Int,
+    @Deprecated("Deprecated in API Version 6.0.0")
     val killPointsDelta: Int,
     val killStreaks: Int,
     val kills: Int,
@@ -45,7 +47,9 @@ data class ParticipantStats(
     val walkDistance: Double,
     val weaponsAcquired: Int,
     val winPlace: Int,
+    @Deprecated("Deprecated in API Version 6.0.0")
     val winPoints: Int,
+    @Deprecated("Deprecated in API Version 6.0.0")
     val winPointsDelta: Double,
     val swimDistance: Double
 )
