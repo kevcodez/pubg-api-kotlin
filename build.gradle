@@ -22,7 +22,7 @@ ext {
     // compile
     jackson_version = "2.9.7"
     okhttp_version = "3.11.0"
-    slf4j_version = "1.7.25"e
+    slf4j_version = "1.7.25"
 
     // test
     junit_version = "5.3.1"
@@ -34,7 +34,7 @@ apply plugin: 'kotlin'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-version = "0.3.3"
+version = "0.4.0"
 archivesBaseName = 'pubg-api-wrapper'
 group = 'de.kevcodez.pubg'
 
