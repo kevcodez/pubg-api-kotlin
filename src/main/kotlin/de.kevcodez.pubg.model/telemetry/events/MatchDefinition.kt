@@ -7,4 +7,7 @@ class MatchDefinition : TelemetryEvent() {
     lateinit var matchId: String
     @JsonProperty("PingQuality")
     var pingQuality: String? = null
+
+    @JsonProperty("SeasonState")
+    var seasonState: String? = null
 }

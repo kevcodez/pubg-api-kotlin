@@ -30,5 +30,6 @@ data class MatchAttributes(
     val mapName: String,
     val shardId: String,
     val titleId: String,
-    val isCustomMatch: Boolean = false
+    val isCustomMatch: Boolean = false,
+    val seasonState: String
 )

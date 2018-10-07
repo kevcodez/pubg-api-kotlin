@@ -51,5 +51,6 @@ data class ParticipantStats(
     val winPoints: Int,
     @Deprecated("Deprecated in API Version 6.0.0")
     val winPointsDelta: Double,
-    val swimDistance: Double
+    val swimDistance: Double,
+    val rankPoints: Double?
 )
