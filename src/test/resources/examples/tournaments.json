@@ -2,16 +2,135 @@
   "data": [
     {
       "type": "tournament",
-      "id": "na-ppc",
+      "id": "as-huya",
       "attributes": {
-        "createdAt": "2018-07-12T16:19:06Z"
+        "createdAt": "2018-10-05T14:41:15Z"
       }
     },
     {
       "type": "tournament",
-      "id": "pgi",
+      "id": "kr-pkl18",
       "attributes": {
-        "createdAt": "2018-07-12T13:53:39Z"
+        "createdAt": "2018-10-01T11:03:32Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "tw-mpls2",
+      "attributes": {
+        "createdAt": "2018-09-27T11:41:36Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "as-imba",
+      "attributes": {
+        "createdAt": "2018-09-20T12:56:17Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "jp-pjs18",
+      "attributes": {
+        "createdAt": "2018-09-14T08:13:24Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "br-pax",
+      "attributes": {
+        "createdAt": "2018-08-31T21:19:14Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "as-sls2",
+      "attributes": {
+        "createdAt": "2018-08-30T13:42:47Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "tw-mclob",
+      "attributes": {
+        "createdAt": "2018-08-26T10:31:26Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "kr-osm18",
+      "attributes": {
+        "createdAt": "2018-08-25T08:52:04Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "hk-emf",
+      "attributes": {
+        "createdAt": "2018-08-25T04:31:53Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-sls2",
+      "attributes": {
+        "createdAt": "2018-08-24T21:35:08Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-pucc",
+      "attributes": {
+        "createdAt": "2018-08-23T09:43:23Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-geman",
+      "attributes": {
+        "createdAt": "2018-08-22T10:34:51Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "kr-kcm18s1",
+      "attributes": {
+        "createdAt": "2018-08-16T07:02:49Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "kr-bj18s1",
+      "attributes": {
+        "createdAt": "2018-08-14T09:26:44Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-glls2",
+      "attributes": {
+        "createdAt": "2018-08-11T17:14:34Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "pgi2018_fpp",
+      "attributes": {
+        "createdAt": "2018-07-28T10:32:42Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "pgi2018_tpp",
+      "attributes": {
+        "createdAt": "2018-07-25T17:12:53Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "na-ppc",
+      "attributes": {
+        "createdAt": "2018-07-12T16:19:06Z"
       }
     },
     {
@@ -86,7 +205,7 @@
     }
   ],
   "links": {
-    "self": "https://api.playbattlegrounds.com/tournaments"
+    "self": "https://api.pubg.com/tournaments"
   },
   "meta": {}
 }
