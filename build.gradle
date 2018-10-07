@@ -1,6 +1,6 @@
 buildscript {
 
-    ext.kotlin_version = "1.2.61"
+    ext.kotlin_version = "1.2.71"
     ext.dokka_version = "0.9.17"
 
     repositories {
@@ -20,13 +20,13 @@ plugins {
 
 ext {
     // compile
-    jackson_version = "2.9.6"
+    jackson_version = "2.9.7"
     okhttp_version = "3.11.0"
-    slf4j_version = "1.7.25"
+    slf4j_version = "1.7.25"e
 
     // test
     junit_version = "5.3.1"
-    mockk_version = "1.8.7"
+    mockk_version = "1.8.9"
 }
 
 apply plugin: 'idea'
