@@ -55,6 +55,15 @@ class ApiClientTest {
     }
 
     @Test
+    fun getPlayerSeason() {
+        mockResponse("/examples/playerseason.json")
+        val seasons = apiClient.getSeason(Region.PC_EUROPE, "accountId", "seasonId")
+
+        // TODO proper assertions
+    }
+
+
+    @Test
     fun getTournaments() {
         mockResponse("/examples/tournaments.json")
         val tournaments = apiClient.getTournaments()
