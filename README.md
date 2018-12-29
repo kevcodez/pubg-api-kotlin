@@ -60,7 +60,7 @@ If you do not have an API key yet, go to the [Official API Page](https://develop
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
 
-val match = apiClient.getMatch(Region.PC_EUROPE, "id")
+val match = apiClient.getMatch(Platform.STEAM, "id")
 println(match.duration)
 ```
 
@@ -73,7 +73,7 @@ You can search for players by their ID/name or get information about a specific 
 ### Searching for players by id/name
 
 ```kotlin
-val playerResponse = apiClient.getPlayers(Region.PC_NORTH_AMERICA, PlayerFilter(playerNames = listOf("shroud")))
+val playerResponse = apiClient.getPlayers(Platform.STEAM, PlayerFilter(playerNames = listOf("shroud")))
 playerResponse.players.forEach { 
     println(it.id)
 }
@@ -82,7 +82,7 @@ playerResponse.players.forEach {
 ### Searching for player by ID
 
 ```kotlin
-val playerResponse = apiClient.getPlayer(Region.PC_EUROPE, "<id>")
+val playerResponse = apiClient.getPlayer(Platform.STEAM, "<id>")
 playerResponse.players.forEach { 
     println(it.id)
 }
@@ -97,7 +97,7 @@ You can only search for concrete matches by ID.
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
 
-val match = apiClient.getMatch(Region.PC_EUROPE, "id")
+val match = apiClient.getMatch(Platform.STEAM, "id")
 println(match.duration)
 ```
 
@@ -123,14 +123,14 @@ val tournament = apiClient.getTournament("<id>")
 
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
-val seasons = apiClient.getSeasons(Region.PC_EUROPE)
+val seasons = apiClient.getSeasons(Platform.STEAM)
 ```
 
 ### Get player season
 
 ```kotlin
 val apiClient = ApiClient("my-key", OkHttpClient())
-val season = apiClient.getSeason(Region.PC_EUROPE, "account-id", "seasonId")
+val season = apiClient.getSeason(Platform.STEAM, "account-id", "seasonId")
 ```
 
 ## Status
