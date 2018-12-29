@@ -136,9 +136,8 @@ val season = apiClient.getSeason(Platform.STEAM, "account-id", "seasonId")
 ## Status
 
 ```kotlin
-val status = apiClient.getStatus()
-println(status.releasedAt)
-println(status.version)
+val status = apiClient.isStatusOk()
+println(status) // bool
 ```
 
 ## Telemetry data
