@@ -9,5 +9,7 @@ data class Character(
     val health: Float,
     val location: Location,
     val ranking: Int,
-    val accountId: String
+    val accountId: String,
+    val isInBlueZone: Boolean,
+    val isInRedZone:  Boolean
 )

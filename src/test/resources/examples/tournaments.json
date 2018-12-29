@@ -2,6 +2,139 @@
   "data": [
     {
       "type": "tournament",
+      "id": "paitest",
+      "attributes": {
+        "createdAt": "2018-12-26T07:26:35Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "as-wegl",
+      "attributes": {
+        "createdAt": "2018-12-19T12:32:07Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "pel18",
+      "attributes": {
+        "createdAt": "2018-12-11T22:24:48Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-pel18",
+      "attributes": {
+        "createdAt": "2018-12-11T20:42:19Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "as-pql",
+      "attributes": {
+        "createdAt": "2018-12-10T08:22:09Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-glls3",
+      "attributes": {
+        "createdAt": "2018-12-07T16:44:14Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-gll2",
+      "attributes": {
+        "createdAt": "2018-12-06T14:21:12Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "cn-pcpi2",
+      "attributes": {
+        "createdAt": "2018-11-17T07:02:37Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "cn-s2ab",
+      "attributes": {
+        "createdAt": "2018-11-16T11:24:56Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "cn-pcpis2",
+      "attributes": {
+        "createdAt": "2018-11-13T09:07:42Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "cn-prso2",
+      "attributes": {
+        "createdAt": "2018-11-09T14:03:43Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-eswc18",
+      "attributes": {
+        "createdAt": "2018-10-28T10:38:10Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "as-seac",
+      "attributes": {
+        "createdAt": "2018-10-26T15:49:16Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "as-thc",
+      "attributes": {
+        "createdAt": "2018-10-25T14:36:49Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-pgw18-4",
+      "attributes": {
+        "createdAt": "2018-10-25T11:17:44Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-pgw18",
+      "attributes": {
+        "createdAt": "2018-10-24T21:10:49Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "hk-ees",
+      "attributes": {
+        "createdAt": "2018-10-16T10:21:54Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "as-vspn",
+      "attributes": {
+        "createdAt": "2018-10-14T07:32:23Z"
+      }
+    },
+    {
+      "type": "tournament",
+      "id": "eu-pglfall",
+      "attributes": {
+        "createdAt": "2018-10-11T11:54:30Z"
+      }
+    },
+    {
+      "type": "tournament",
       "id": "as-huya",
       "attributes": {
         "createdAt": "2018-10-05T14:41:15Z"

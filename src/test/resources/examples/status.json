@@ -1,10 +1,6 @@
 {
   "data": {
     "type": "status",
-    "id": "pubg-api",
-    "attributes": {
-      "releasedAt": "1900-01-01T01:00:00Z",
-      "version": "DEVELOPMENT"
-    }
+    "id": "pubg-api"
   }
 }

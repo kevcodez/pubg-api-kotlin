@@ -11,7 +11,7 @@ data class Item(
     val itemId: String,
     val stackCount: Int,
     var itemCategory: Category? = null,
-    var itemSubCategory: SubCategory?,
+    var itemSubCategory: SubCategory? = null,
     val attachedItems: List<String>
 ) {
     @JsonProperty("category")

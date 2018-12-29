@@ -6,13 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import de.kevcodez.pubg.exception.ApiException
-import de.kevcodez.pubg.model.Region
+import de.kevcodez.pubg.model.Platform
 import de.kevcodez.pubg.model.match.MatchResponse
 import de.kevcodez.pubg.model.player.PlayerResponse
 import de.kevcodez.pubg.model.player.PlayersResponse
 import de.kevcodez.pubg.model.season.PlayerSeasonResponse
 import de.kevcodez.pubg.model.season.SeasonResponse
-import de.kevcodez.pubg.model.status.Status
 import de.kevcodez.pubg.model.telemetry.events.TelemetryEvent
 import de.kevcodez.pubg.model.tournament.TournamentResponse
 import de.kevcodez.pubg.model.tournament.TournamentsResponse
@@ -20,7 +19,6 @@ import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import org.slf4j.LoggerFactory
 
 class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient) {
 
@@ -29,12 +27,12 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         .registerModule(JavaTimeModule())
         .enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT)
 
-    fun getPlayer(region: Region, id: String, season: String? = null): PlayerResponse {
+    fun getPlayer(platform: Platform, id: String, season: String? = null): PlayerResponse {
         var urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
             .addPathSegment("shards")
-            .addPathSegment(region.identifier)
+            .addPathSegment(platform.identifier)
             .addPathSegment("players")
             .addPathSegment(id)
 
@@ -49,12 +47,12 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         return objectMapper.readValue(response.body()!!.string(), PlayerResponse::class.java)
     }
 
-    fun getPlayers(region: Region, playerFilter: PlayerFilter): PlayersResponse {
+    fun getPlayers(platform: Platform, playerFilter: PlayerFilter): PlayersResponse {
         var urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
             .addPathSegment("shards")
-            .addPathSegment(region.identifier)
+            .addPathSegment(platform.identifier)
             .addPathSegment("players")
 
         if (playerFilter.playerIds.isNotEmpty()) {
@@ -76,12 +74,12 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         return objectMapper.readValue(bodyAsString, PlayersResponse::class.java)
     }
 
-    fun getMatch(region: Region, id: String): MatchResponse {
+    fun getMatch(platform: Platform, id: String): MatchResponse {
         val urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
             .addPathSegment("shards")
-            .addPathSegment(region.identifier)
+            .addPathSegment(platform.identifier)
             .addPathSegment("matches")
             .addPathSegment(id)
 
@@ -105,12 +103,12 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         return objectMapper.readValue(response.body()!!.string(), object : TypeReference<List<TelemetryEvent>>() {})
     }
 
-    fun getSeasons(region: Region): SeasonResponse {
+    fun getSeasons(platform: Platform): SeasonResponse {
         val urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
             .addPathSegment("shards")
-            .addPathSegment(region.identifier)
+            .addPathSegment(platform.identifier)
             .addPathSegment("seasons")
 
         val request = buildRequest(urlBuilder.build())
@@ -122,12 +120,12 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
         return objectMapper.readValue(bodyAsString, SeasonResponse::class.java)
     }
 
-    fun getSeason(region: Region, accountId: String, seasonId: String): PlayerSeasonResponse {
+    fun getSeason(platform: Platform, accountId: String, seasonId: String): PlayerSeasonResponse {
         val urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
             .addPathSegment("shards")
-            .addPathSegment(region.identifier)
+            .addPathSegment(platform.identifier)
             .addPathSegment("players")
             .addPathSegment(accountId)
             .addPathSegment("seasons")
@@ -174,18 +172,16 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
     }
 
 
-    fun getStatus(): Status {
+    fun isStatusOk(): Boolean {
         val urlBuilder = HttpUrl.Builder()
             .scheme(API_SCHEME)
             .host(API_HOST)
             .addPathSegment("status")
 
         val request = buildRequest(urlBuilder.build())
-
         val response = httpClient.newCall(request).execute()
-        validateResponse(response)
 
-        return objectMapper.readValue(response.body()!!.string(), Status::class.java)
+        return response.isSuccessful
     }
 
     private fun buildRequest(url: HttpUrl): Request {
@@ -203,8 +199,6 @@ class ApiClient(private val apiKey: String, private val httpClient: OkHttpClient
     }
 
     companion object {
-
-        private val LOG = LoggerFactory.getLogger(ApiClient::class.java)
 
         private const val API_SCHEME = "https"
         private const val API_HOST = "api.playbattlegrounds.com"

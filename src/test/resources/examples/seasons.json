@@ -44,8 +44,8 @@
       "type": "season",
       "id": "division.bro.official.2017-pre5",
       "attributes": {
-        "isCurrentSeason": false,
-        "isOffseason": false
+        "isOffseason": false,
+        "isCurrentSeason": false
       }
     },
     {
@@ -60,8 +60,8 @@
       "type": "season",
       "id": "division.bro.official.2017-pre7",
       "attributes": {
-        "isOffseason": false,
-        "isCurrentSeason": false
+        "isCurrentSeason": false,
+        "isOffseason": false
       }
     },
     {
@@ -156,8 +156,16 @@
       "type": "season",
       "id": "division.bro.official.pc-2018-01",
       "attributes": {
-        "isCurrentSeason": true,
+        "isCurrentSeason": false,
         "isOffseason": false
+      }
+    },
+    {
+      "type": "season",
+      "id": "division.bro.official.pc-2018-02",
+      "attributes": {
+        "isOffseason": false,
+        "isCurrentSeason": true
       }
     }
   ],

@@ -1,6 +1,6 @@
 package de.kevcodez.pubg.client
 
-import de.kevcodez.pubg.model.Region
+import de.kevcodez.pubg.model.Platform
 import io.mockk.every
 import io.mockk.mockk
 import okhttp3.*
@@ -16,7 +16,7 @@ class ApiClientTest {
     @Test
     fun getMatch() {
         mockResponse("/examples/match.json")
-        val matchResponse = apiClient.getMatch(Region.PC_ASIA, "id")
+        val matchResponse = apiClient.getMatch(Platform.STEAM, "id")
 
         // TODO proper assertions
     }
@@ -24,7 +24,7 @@ class ApiClientTest {
     @Test
     fun getPlayer() {
         mockResponse("/examples/player.json")
-        val playerResponse = apiClient.getPlayer(region = Region.PC_EUROPE, id = "foo")
+        val playerResponse = apiClient.getPlayer(platform = Platform.STEAM, id = "foo")
 
         // TODO proper assertions
     }
@@ -32,7 +32,7 @@ class ApiClientTest {
     @Test
     fun getPlayers() {
         mockResponse("/examples/players.json")
-        val playersResponse = apiClient.getPlayers(region = Region.PC_ASIA, playerFilter = PlayerFilter())
+        val playersResponse = apiClient.getPlayers(platform = Platform.STEAM, playerFilter = PlayerFilter())
 
         // TODO proper assertions
     }
@@ -49,7 +49,7 @@ class ApiClientTest {
     @Test
     fun getSeasons() {
         mockResponse("/examples/seasons.json")
-        val seasons = apiClient.getSeasons(Region.PC_EUROPE)
+        val seasons = apiClient.getSeasons(Platform.STEAM)
 
         // TODO proper assertions
     }
@@ -57,7 +57,7 @@ class ApiClientTest {
     @Test
     fun getPlayerSeason() {
         mockResponse("/examples/playerseason.json")
-        val seasons = apiClient.getSeason(Region.PC_EUROPE, "accountId", "seasonId")
+        val seasons = apiClient.getSeason(Platform.STEAM, "accountId", "seasonId")
 
         // TODO proper assertions
     }
@@ -82,7 +82,7 @@ class ApiClientTest {
     @Test
     fun getStatus() {
         mockResponse("/examples/status.json")
-        val status = apiClient.getStatus()
+        val status = apiClient.isStatusOk()
 
         // TODO proper assertions
     }
@@ -95,7 +95,7 @@ class ApiClientTest {
                 ResponseBody.create(
                     MediaType.parse("application/json"),
                     text
-                )!!
+                )
 
         val mockedCall: Call = mockk()
         every { httpClient.newCall(any()) } returns mockedCall
